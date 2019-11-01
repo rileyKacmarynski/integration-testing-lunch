@@ -1,11 +1,12 @@
 using Core.Entities;
 using Core.Entities.CartEntity;
 using Core.Entities.OrderEntity;
+using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database
 {
-    public class ThingShopDbContext : DbContext
+    public class ThingShopDbContext : DbContext, IThingShopDbContext
     {
         public ThingShopDbContext(DbContextOptions<ThingShopDbContext> options)
             : base(options)
