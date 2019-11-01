@@ -3,7 +3,7 @@ using Core.Entities.CartEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Database.Configurations.cs
+namespace Infrastructure.Database.Configurations
 {
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
@@ -22,11 +22,6 @@ namespace Infrastructure.Database.Configurations.cs
                 .IsRequired();
 
             builder.Property<int>("CartId");
-
-            // builder.HasOne(e => e.Cart)
-            //     .WithOne(e => e.Customer)
-            //     .HasForeignKey("CartId")
-            //     .HasConstraintName("FK_Cart");
         }
     }
 }

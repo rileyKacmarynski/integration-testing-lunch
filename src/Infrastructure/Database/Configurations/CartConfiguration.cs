@@ -2,7 +2,7 @@ using Core.Entities.CartEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Database.Configurations.cs
+namespace Infrastructure.Database.Configurations
 {
     public class CartConfiguration : IEntityTypeConfiguration<Cart>
     {

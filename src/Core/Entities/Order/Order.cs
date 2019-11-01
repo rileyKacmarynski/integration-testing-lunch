@@ -6,7 +6,7 @@ namespace Core.Entities.OrderEntity
     {
         private IEnumerable<OrderItem> _orderItems = new List<OrderItem>();
         public int OrderId { get; set; }
-        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
         public decimal Total { get; set; }
     }
 }
