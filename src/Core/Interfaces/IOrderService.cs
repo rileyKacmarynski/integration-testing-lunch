@@ -1,9 +1,13 @@
+using Core.Dtos;
 using Core.Entities.OrderEntity;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Core.Interfaces
 {
     public interface IOrderService
     {
-        Order GetOrder(int id);
+        Task<Order> GetByIdAsync(int id, CancellationToken cancellationToken);
+        Task CreateOrderAsync(CreateOrderRequest orderRequest, CancellationToken cancellationToken);
     }
 }

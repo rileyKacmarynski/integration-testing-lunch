@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Core.Entities.CartEntity;
 
 namespace Core.Entities.OrderEntity
 {
@@ -16,5 +18,18 @@ namespace Core.Entities.OrderEntity
         public int OrderId { get; set; }
         public Customer Customer { get; set; }
         public decimal Total { get; set; }
+
+        internal void AddItems(ICollection<CartItem> items)
+        {
+            foreach(var item in items)
+            {
+                _orderItems.Add(new OrderItem
+                {
+                    Product = item.Product,
+                    Quantity = item.Quantity,
+                    //Total = item.Product.Price * item.Quantity
+                });
+            }
+        }
     }
 }
