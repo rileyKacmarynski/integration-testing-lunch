@@ -25,9 +25,9 @@ namespace Core.Entities.OrderEntity
             {
                 _orderItems.Add(new OrderItem
                 {
-                    Product = item.Product,
+                    Product = item.Product,     // this doesn't work, but we
                     Quantity = item.Quantity,
-                    //Total = item.Product.Price * item.Quantity
+                    Total = item.Price * item.Quantity
                 });
             }
         }

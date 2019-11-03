@@ -35,7 +35,14 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateOrderRequest orderRequest, CancellationToken cancellationToken)
         {
-            await _orderService.CreateOrderAsync(orderRequest, cancellationToken);
+            try
+            {
+                await _orderService.CreateOrderAsync(orderRequest, cancellationToken);
+            }
+            catch(Exception ex)
+            {
+
+            }
             return Ok();
         }
 

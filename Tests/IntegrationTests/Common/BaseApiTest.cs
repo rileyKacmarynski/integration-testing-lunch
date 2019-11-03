@@ -1,7 +1,10 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Interfaces;
+using Core.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Web;
@@ -17,7 +20,7 @@ namespace IntegrationTests.Common
         [OneTimeSetUp]
         public void Init()
         {
-            _factory = new ApiWebApplicationFactory<Startup>();
+            _factory = new ApiWebApplicationFactory<Startup>()
             _client = _factory.CreateClient();
         }
 

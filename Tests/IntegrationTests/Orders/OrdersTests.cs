@@ -34,7 +34,7 @@ namespace IntegrationTests.Orders
         public async Task CreateOrder_Valid_CreatesOrder()
         {
             // arrange
-            var orderRequest = new CreateOrderRequest { CustomerId = 2 };
+            var orderRequest = new CreateOrderRequest { CartId = 2 };
 
             // act
             var response = await PostAsync("api/orders", orderRequest);

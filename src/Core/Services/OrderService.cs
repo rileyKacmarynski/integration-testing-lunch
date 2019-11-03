@@ -29,15 +29,14 @@ namespace Core.Services
 
         public async Task CreateOrderAsync(CreateOrderRequest orderRequest, CancellationToken cancellationToken)
         {
-            var customer = await _context.Customers
-                .Include(c => c.Cart)
-                //.ThenInclude(c => c.Items)
-                .SingleAsync(c => c.CustomerId == orderRequest.CustomerId, cancellationToken);
+            var cart = await _context.Carts
+                .Include(c => c.Customer)
+                .SingleAsync(c => c.CartId == orderRequest.CartId);
 
-            var order = new Order(customer);
-            order.AddItems(customer.Cart.Items);
+            var order = new Order(cart.Customer);
+            order.AddItems(cart.Items);
 
-            customer.EmptyCart();
+            cart.Customer.EmptyCart();
             await _context.SaveChangesAsync(cancellationToken);
         }
     }
