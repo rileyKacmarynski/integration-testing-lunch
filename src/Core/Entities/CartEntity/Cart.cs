@@ -20,5 +20,15 @@ namespace Core.Entities.CartEntity
                 Quantity = 1,
             });
         }
+
+        public void AddCartItem(int productId, int quantity, decimal price)
+        {
+            _cartItems.Add(new CartItem
+            {
+                ProductId = productId,
+                Quantity = quantity,
+                Price = price
+            });
+        }
     }
 }

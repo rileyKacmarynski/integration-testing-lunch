@@ -33,6 +33,7 @@ namespace Web
             services.AddScoped<IThingShopDbContext, ThingShopDbContext>();
 
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ICustomerService, CustomerService>();
 
             services.AddControllers();
         }

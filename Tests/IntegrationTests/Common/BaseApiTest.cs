@@ -20,7 +20,7 @@ namespace IntegrationTests.Common
         [OneTimeSetUp]
         public void Init()
         {
-            _factory = new ApiWebApplicationFactory<Startup>()
+            _factory = new ApiWebApplicationFactory<Startup>();
             _client = _factory.CreateClient();
         }
 

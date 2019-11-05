@@ -18,16 +18,11 @@ namespace IntegrationTests.Common
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            //builder.ConfigureAppConfiguration((context, config) =>
-            //{
-            //    var projectDir = Directory.GetCurrentDirectory();
-            //    var configPath = Path.Combine(projectDir, "appsettings.json");
-            //    config.AddJsonFile(configPath);
-            //});
-
             builder.ConfigureServices(async services => {
 
+                #region auth getting in the way?
                 services.Configure<MvcOptions>(options => options.Filters.Add(new AllowAnonymousFilter()));
+                #endregion
 
                 #region If we want to just seed the in memory db
 
@@ -75,8 +70,20 @@ namespace IntegrationTests.Common
                 //}
                 #endregion
 
+
+
             });
 
+            #region Seperate config
+            builder.ConfigureAppConfiguration((context, config) =>
+            {
+                var projectDir = Directory.GetCurrentDirectory();
+                var configPath = Path.Combine(projectDir, "appsettings.json");
+
+                config.Sources.Clear();             // I think this is optional.
+                config.AddJsonFile(configPath);
+            });
+            #endregion
         }
 
         protected override void ConfigureClient(HttpClient client)
